@@ -33,4 +33,4 @@ Plataforma de comercio electrónico desarrollada a medida para la venta de produ
 
 1. Clona este repositorio:
    ```bash
-   git clone [https://github.com/TU_USUARIO/boutique-cdo.git](https://github.com/TU_USUARIO/boutique-cdo.git)
+   git clone [https://github.com/TU_USUARIO/boutique-cdo.git](https://github.com/nelsonadgo/boutique-cdo.git)
