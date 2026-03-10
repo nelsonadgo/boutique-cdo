@@ -1,0 +1,627 @@
+/* =========================================
+   VARIABLES Y ESTILOS GENERALES
+   ========================================= */
+:root {
+    --verde-cbd: #2e8b57;      /* Verde natural y elegante (botones y acentos) */
+    --verde-oscuro: #1e5c3a;   /* Verde más oscuro para cuando pasas el mouse */
+    --fondo-tienda: #f8f9fa;   /* Fondo claro y limpio para el cuerpo */
+    --texto-oscuro: #333333;   /* Texto oscuro súper legible */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--fondo-tienda);
+    color: var(--texto-oscuro);
+    margin: 0;
+}    
+
+/* =========================================
+   HEADER Y NAVEGACIÓN
+   ========================================= */
+header {
+    background-color: white; /* Barra superior blanca, muy limpia */
+    color: var(--texto-oscuro);
+    padding: 10px 20px;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    position: sticky; 
+    top: 0;
+    z-index: 1000; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Sombrita suave abajo */
+}
+
+header ul {
+    list-style: none; 
+    display: flex; 
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    align-items: center; 
+}
+
+header a {
+    color: var(--texto-oscuro);
+    text-decoration: none; 
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header a:hover {
+    color: var(--verde-cbd); /* Se pinta de verde sutil al pasar el mouse */
+}
+
+.btn-nav {
+    background-color: var(--verde-cbd);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-nav:hover {
+    background-color: var(--verde-oscuro);
+    transform: scale(1.05);
+}
+
+/* =========================================
+   HERO SECTION (BANNER PRINCIPAL)
+   ========================================= */
+#hero {
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/banner_hero_cogollo.png');
+    background-color: #222; 
+    background-size: cover; 
+    background-position: center;
+    height: 80vh; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    color: white;
+}
+
+.hero-contenido h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero-contenido p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.btn-hero {
+    background-color: var(--verde-cbd);
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px; 
+    font-size: 1.2rem;
+    transition: background-color 0.3s, transform 0.3s;
+    display: inline-block;
+}
+
+.btn-hero:hover {
+    background-color: var(--verde-oscuro);
+    transform: scale(1.1); 
+}
+
+/* =========================================
+   CATÁLOGO DE PRODUCTOS (E-COMMERCE)
+   ========================================= */
+.grid-productos {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.tarjeta-producto {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.tarjeta-producto img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: contain; 
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.tarjeta-producto h3 {
+    margin: 0 0 10px 0;
+    color: var(--texto-oscuro);
+    font-size: 1.3rem;
+}
+
+.precio {
+    font-size: 1.6rem;
+    color: var(--verde-cbd);
+    font-weight: 800;
+    margin: 10px 0;
+}
+
+.stock-info {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.btn-carrito {
+    background-color: var(--verde-cbd);
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-carrito:hover {
+    background-color: var(--verde-oscuro);
+}
+
+/* =========================================
+   FORMULARIOS (LOGIN Y REGISTRO)
+   ========================================= */
+#acceso-club, #seccion-registro {
+    background-color: white;
+    width: 90%; 
+    max-width: 400px; 
+    margin: 50px auto; 
+    padding: 2rem;
+    border-radius: 15px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
+    text-align: center;
+    display: none; 
+}
+
+#acceso-club h2, #seccion-registro h2 {
+    color: var(--texto-oscuro);
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+input[type="text"], 
+input[type="password"],
+input[type="email"],
+input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0; 
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box; 
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: var(--verde-cbd); 
+    outline: none;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: var(--verde-cbd); 
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--verde-oscuro); 
+}
+
+#btn-registro, #btn-volver-login {
+    background: none;
+    border: none;
+    color: var(--verde-cbd); 
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+#btn-registro:hover, #btn-volver-login:hover {
+    color: var(--verde-oscuro);
+}
+
+/* =========================================
+   DASHBOARD Y TABLAS
+   ========================================= */
+#dashboard {
+    display: none;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+#btn-logout {
+    background-color: #ff4d4d; 
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.contenedor-tabla {
+    margin-top: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    overflow-x: auto; 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: var(--texto-oscuro);
+    color: white;
+}
+
+tr:hover {
+    background-color: var(--fondo-tienda); 
+}
+
+#btn-cargar-usuarios {
+    padding: 8px 15px;
+    background-color: var(--verde-cbd);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+#btn-eliminar {
+    background-color: #dc3545; 
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#btn-eliminar:hover { background-color: #c82333; }
+
+/* =========================================
+   FOOTER (CONTACTO)
+   ========================================= */
+#contacto {
+    background-color: var(--texto-oscuro); /* Footer oscuro para contrastar */
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 50px;
+}
+
+.info-contacto p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+
+.copyright {
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* =========================================
+   RESPONSIVE (ADAPTACIÓN A CELULARES)
+   ========================================= */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; 
+        padding: 15px;
+        position: relative; 
+    }
+
+    .logo {
+        margin-bottom: 15px; 
+    }
+
+    header ul {
+        flex-direction: column; 
+        gap: 10px; 
+        width: 100%;
+        text-align: center; 
+    }
+
+    .btn-nav {
+        width: 100%; 
+        padding: 10px;
+    }
+
+    .hero-contenido h1 { font-size: 2.5rem; }
+    .hero-contenido p { font-size: 1.2rem; }
+}
+
+.modal {
+    position: fixed;
+    z-index: 2000; /* Asegura que esté por encima de todo */
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6); /* Fondo semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-contenido {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    
+}
+
+.cerrar-modal:hover {
+    color: var(--texto-oscuro);
+}
+
+.item-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+
+.total-carrito {
+    margin-top: 20px;
+    text-align: right;
+    border-top: 2px solid var(--texto-oscuro);
+    padding-top: 15px;
+}
+
+.swal2-container {
+    z-index: 9999 !important; /* Asegura que los pop-ups de SweetAlert estén por encima de todo */
+}
+
+.chat-flotante {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #2e8b57;
+    color: white;
+    font-size: 2rem;
+    border: none;
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 10000; /* Asegura que el botón del chatbot esté por encima de todo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Animación suave al interactuar */
+}
+
+.chat-flotante:hover {
+    background-color: #246b43; /* Cambia a un verde más oscuro al pasar el mouse */
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño para dar feedback visual */
+}
+
+.imagen-chat {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Asegura que la imagen del chat se ajuste bien dentro del botón */
+    border-radius: 50%; /* Hace que la imagen también sea circular */
+}
+
+/* =========================================
+   ESTILOS DE LA VENTANA DEL CHAT
+   ========================================= */
+#ventana-chat {
+    position: fixed;
+    bottom: 110px; /* Aparece justito arriba de tu botón flotante */
+    right: 30px;
+    width: 350px;
+    height: 450px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    transform-origin: bottom right; /* Hace que la animación salga desde el botón */
+}
+
+/* Clases para ocultar y mostrar con animación */
+.chat-oculto {
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.chat-visible {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Cabecera (Verde) */
+.chat-header {
+    background-color: #2e8b57;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+#btn-cerrar-chat {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* Fondo de los mensajes */
+.chat-mensajes {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Burbujas de chat */
+.mensaje {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.mensaje.bot {
+    background-color: white;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.mensaje.usuario {
+    background-color: #dcf8c6; /* Estilo WhatsApp */
+    color: #333;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Caja de texto inferior */
+.chat-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: white;
+    gap: 10px;
+}
+
+#input-chat {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+}
+
+#btn-enviar-chat {
+    background-color: #2e8b57;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* =========================================
+   ESTILOS DE LOS BOTONES DE CATEGORÍAS
+   ========================================= */
+#filtros-categorias {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Si la pantalla es chica, se acomodan abajo */
+    gap: 15px; /* Separación entre botones */
+}
+
+.btn-filtro {
+    background-color: transparent;
+    color: #2e8b57;
+    border: 2px solid #2e8b57;
+    padding: 8px 20px;
+    border-radius: 25px; /* Esto les da la forma de píldora */
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Animación suave */
+}
+
+.btn-filtro:hover {
+    background-color: #e8f5e9; /* Un verde muy clarito al pasar el mouse */
+    transform: translateY(-2px); /* Pequeño saltito */
+}
+
+/* Esta clase se la pondremos al botón que esté seleccionado */
+.btn-filtro.activo {
+    background-color: #2e8b57;
+    color: white;
+    box-shadow: 0px 4px 10px rgba(46, 139, 87, 0.4);
+}

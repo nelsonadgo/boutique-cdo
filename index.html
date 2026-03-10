@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique CDO | Tienda Online</title>
+    <link rel="icon" href="/img/icono.ico" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Boutique CDO</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" id="nav-inicio">Inicio</a></li>
+                <li><a href="#productos" id="nav-productos">Catálogo</a></li>
+                <li><a href="#contacto" id="nav-contacto">Contacto</a></li>
+                
+                <li id="li-ingresar"><button id="btn-nav-login" class="btn-nav">Ingresar</button></li>
+                
+                <li id="li-panel" style="display: none;">
+                    <button id="btn-nav-panel" class="btn-nav" style="background-color: #2e8b57; color: white;">
+                        Mi Perfil 👤
+                    </button>
+                </li>
+                
+                <li id="li-carrito">
+                    <button id="btn-nav-carrito" class="btn-nav" style="background-color: #333; color: white;">
+                        🛒 <span id="contador-carrito">0</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-contenido">
+            <h1>Tu cambio empieza hoy</h1>
+            <p>Los Mejores Productos a solo un click.</p>
+            <a href="#productos" class="btn-hero">Ver Productos 👇</a>
+        </div>
+    </section>
+
+    <section id="productos">
+        <h2 style="text-align: center; margin-bottom: 20px;">Nuestro Catálogo</h2>
+        
+        <div id="filtros-categorias" style="text-align: center; margin-bottom: 30px;">
+            <button onclick="filtrarProductos('todos', this)" class="btn-filtro activo">Todos</button>
+            <button onclick="filtrarProductos('grow-shop', this)" class="btn-filtro">Grow Shop</button>
+            <button onclick="filtrarProductos('medicinal', this)" class="btn-filtro">Medicinal</button>
+            <button onclick="filtrarProductos('accesorios', this)" class="btn-filtro">Accesorios</button>
+        </div>
+
+        <div id="contenedor-tarjetas" class="grid-productos">
+            </div>
+    </section>
+
+    <section id="acceso-club">
+        <h2>Bienvenido a Boutique CDO</h2>
+
+        <form id="form-login">
+            <div>
+            <label for="usuario">Usuario o Email :</label>
+            <input type="text" id="usuario" name="usuario" placeholder="ej. cliente123" required>
+            </div>
+
+            <div>
+            <label for="password">Contraseña :</label>
+            <input type="password" id="password" name="password" placeholder="********" required>
+            </div>
+
+            <button type="submit">Ingresar</button>
+        </form>
+
+        <p>¿No tienes cuenta? <button id="btn-registro">Registrarme</button></p>
+
+    </section>
+
+    <section id="dashboard" style="display: none;">
+        <h2>Panel de Control 🏆</h2>
+        <p>Bienvenido, <span id="nombre-usuario"></span>.</p>
+        <button id="btn-logout">Cerrar Sesión</button>
+
+        <div id="panel-admin" class="contenedor-tabla" style="display: none;">
+            <h3>Administración de Clientes</h3>
+            <button id="btn-cargar-usuarios">Actualizar Lista</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-usuarios-body"></tbody>
+            </table>
+
+            <hr style="margin: 40px 0; border: 1px solid #ddd;">
+
+            <h3>Gestión de Inventario 📦</h3>
+            
+            <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px;">
+                <h4>Agregar Nuevo Producto:</h4>
+                <input type="text" id="nombre-producto" placeholder="Nombre (ej: Aceite CBD)" style="padding: 8px;">
+                <input type="text" id="desc-producto" placeholder="Descripción breve" style="padding: 8px;">
+                <input type="number" id="precio-producto" placeholder="Precio ($)" style="padding: 8px;">
+                <input type="number" id="stock-producto" placeholder="Stock Inicial" style="padding: 8px;">
+                <input type="text" id="img-producto" placeholder="Ruta imagen (ej: img/aceite.png)" style="padding: 8px;">
+                
+                <select id="cat-producto" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option value="grow-shop">Grow Shop</option>
+                    <option value="medicinal">Medicinal</option>
+                    <option value="accesorios">Accesorios</option>
+                </select>
+
+                <button onclick="crearProducto()" style="background-color: #2e8b57; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px;">➕ Agregar Producto</button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-productos-admin">
+                    </tbody>
+            </table>
+
+        </div>
+
+        <div id="panel-socio" class="contenedor-tabla" style="display: none;">
+            <h3>Mis Pedidos 🛍️</h3>
+            <p>Aquí verás el historial de tus compras.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nro. Pedido</th>
+                        <th>Fecha de Compra</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-pedidos-body">
+                    </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="seccion-registro">
+        <h2>Registro de Nuevo Cliente</h2>
+
+        <form id="form-registro" class="formulario">
+            <input type="text" id="nuevo-nombre" placeholder="Nombre y Apellido" required>
+            <input type="text" id="nuevo-dni" placeholder="DNI" required>
+            <input type="text" id="nueva-direccion" placeholder="Dirección de envío" required>
+            <input type="tel" id="nuevo-telefono" placeholder="Teléfono" required>
+            
+            <input type="text" id="nuevo-usuario" placeholder="Nombre de Usuario (ej: juan123)" required>
+            <input type="password" id="nuevo-password" placeholder="Contraseña" required>
+            
+            <button type="submit" class="btn-principal">Crear Cuenta</button>
+            <button type="button" id="btn-volver-login" class="btn-secundario">Ya tengo cuenta</button>
+        </form>
+
+        <p>¿Ya tienes cuenta? <button id="btn-volver-login">Volver al Login</button></p>
+
+    </section>
+
+    <section id="contacto">
+        <h2>Contactanos 📞</h2>
+        <div class="info-contacto">
+            <p>📍 Av. Siempreviva 742, Buenos Aires</p>
+            <p>📧 info@boutiquecdo.com</p>
+            <p>⏰ Lunes a Viernes: 10:00 - 20:00 hs</p>
+        </div>
+        <p class="copyright">© 2026 Boutique CDO. Todos los derechos reservados.</p>
+    </section>
+
+    <div id="modal-carrito" class="modal" style="display: none;">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" id="cerrar-carrito">&times;</span>
+            <h2>Tu Carrito de Compras 🛒</h2>
+            
+            <div id="lista-carrito"></div>
+            
+            <div class="total-carrito">
+                <h3>Total a Pagar: $<span id="total-pago">0.00</span></h3>
+                <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 15px;">
+                    <button id="btn-vaciar-carrito" style="background-color: #dc3545; color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold;">🗑️ Vaciar Carrito</button>
+                    <button id="btn-comprar" class="btn-carrito" style="margin: 0; width: auto;">✅ Finalizar Compra</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ventana-chat" class="chat-oculto">
+        <div class="chat-header">
+            <h3>🤖 Asistente CDO</h3>
+            <button id="btn-cerrar-chat" title="Cerrar chat">✖️</button>
+        </div>
+        
+        <div class="chat-mensajes" id="chat-mensajes">
+            <div class="mensaje bot">
+                <p>¡Hola! 👋 Bienvenido a Boutique CDO. ¿En qué te puedo ayudar hoy?</p>
+            </div>
+        </div>
+        
+        <div class="chat-input">
+            <input type="text" id="input-chat" placeholder="Escribe tu mensaje...">
+            <button id="btn-enviar-chat">➤</button>
+        </div>
+    </div>
+
+    <button id="btn-chatbot" class="chat-flotante" title="¿Necesitas ayuda?">
+        <img src="/img/icono-chat.png" alt="chat" class="imagen-chat">
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="main.js"></script>
+</body>
+</html>
